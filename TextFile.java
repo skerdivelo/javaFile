@@ -23,5 +23,13 @@ public class TextFile{
         String tmp;
         if(this.mode=='W') throw new FileException("Write-only file!");
         tmp = reader.readLine();
+        if(tmp==null) throw new FileException("End of file!");
+        return tmp;
+    }
+    public void closeFile() throws IOException{
+        if(this.mode=='W')
+            writer.close();
+        else
+            reader.close();
     }
 }
